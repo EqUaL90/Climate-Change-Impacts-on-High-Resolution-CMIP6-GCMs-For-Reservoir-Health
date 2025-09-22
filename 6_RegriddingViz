@@ -1,0 +1,66 @@
+fig, axs = plt.subplots(2, 3, figsize=(18, 10))
+
+ax = axs[0, 0]
+im0 = old_precip_ts['pr'].plot(ax=ax, cmap='jet_r', add_colorbar=False)
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ACCESS_CM2 Baseline Precipitation (Old)", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+
+
+ax = axs[0, 1]
+im1 = regridded_precip_ts['pr'].plot(ax=ax, cmap='jet_r', add_colorbar=False)
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ACCESS_CM2 Baseline Precipitation (Regridded)", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+
+ax = axs[0, 2]
+im2 = era5_precip_ts['Precip'].plot(ax=ax, cmap='jet_r', add_colorbar=False)
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ERA5 Precipitation", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+
+divider = make_axes_locatable(axs[0, 2])
+cax1 = divider.append_axes("right", size="5%", pad=0.05)
+cbar = fig.colorbar(im2, cax=cax1) 
+cbar.set_label('Precipitation (mm/month)', fontsize=16)
+cbar.ax.tick_params(labelsize=14)
+
+ax = axs[1, 0]
+im3 = old_temp_ts['tas'].plot(ax=ax, cmap='inferno', add_colorbar=False)
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ACCESS_CM2 Baseline Temperature (Old)", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+ax = axs[1, 1]
+im4 = regridded_temp_ts['tas'].plot(ax=ax, cmap='inferno', add_colorbar=False)
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ACCESS_CM2 Baseline Temperature (Regridded)", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+
+ax = axs[1, 2]
+im5 = era5_temp_ts['Temp'].plot(ax=ax, cmap='inferno', add_colorbar=False)
+# Plot the reservoir and river
+reservoir.plot(ax=ax, color='lightblue', edgecolor='lightgray', linewidth=1.5, alpha=0.7)
+river.plot(ax=ax, color='skyblue', linewidth=1.5, alpha=0.7)
+ax.set_title("ERA5 Temperature", fontsize=16)
+ax.set_xticks([]); ax.set_yticks([])
+ax.set_xlabel(''); ax.set_ylabel('')
+
+divider = make_axes_locatable(axs[1, 2])
+cax2 = divider.append_axes("right", size="5%", pad=0.05)
+cbar = fig.colorbar(im5, cax=cax2)
+cbar.set_label('Temperature (°C)', fontsize=18)
+cbar.ax.tick_params(labelsize=16)
+
+plt.tight_layout()
+#plt.savefig(r"D:\Document folder\Projects\Research_Nigeria\Kainji Lake\ManuKainji to Professor\General format\ManuKainjiPhd\ResMod\C4_ResBCMLdata\0Fig\XXRegriddingProofWithReservoir.png", dpi = 700)
+plt.show()
