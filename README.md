@@ -1,3 +1,3 @@
-Being the code for the submitted manuscript titled "Data-driven Assessment of High-Resolution CMIP6 Temperature and Precipitation Projections Using Quantile Delta - Deep Learning Bias Correction in a Reservoir-Affected Basin"
+Being the code for the submitted manuscript titled "Hybrid Quantile Delta - Deep Learning Bias Correction Technique for Enhancing Climate Risk Assessment in a Reservoir-Modulated Basin"
 
 Run scripts in chronology
